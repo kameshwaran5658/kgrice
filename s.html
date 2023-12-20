@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KG RICE STORE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      background-color: #f5f5f5;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .n {
+      list-style-type: none; 
+      text-decoration: none;
+      overflow: hidden;
+      background: linear-gradient(to right, #3498db, #6a89cc); /* Gradient background */
+      border-radius: 0 0 30px 30px;
+      padding: 0;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      margin: auto;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease; /* Smooth transition on hover */
+    }
+
+    .nl, .p, li a {
+      display: inline-block;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ecf0f1;
+      text-decoration: none;
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    li a:hover {
+      background: linear-gradient(to right, #2980b9, #6a89cc); /* Gradient background on hover */
+      color: #fff;
+    }
+
+    /* Additional styles for the product section */
+    .product-section {
+      padding: 20px;
+      background: linear-gradient(to right, #fff, #f0f0f0);
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 70px; /* Adjusted to accommodate the fixed navigation bar */
+    }
+
+    /* Styles for the animated icons */
+    .icon {
+      font-size: 24px;
+      margin-right: 5px;
+      transition: transform 0.3s ease; /* Smooth transition on hover */
+    }
+
+    .icon:hover {
+      transform: rotate(360deg) scale(1.2); /* Add scale animation on hover */
+    }
+
+    @media screen and (max-width: 600px) {
+      .nl, .p, li a {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <ul class="n">
+    <li class="nl"> <i class="fas fa-store icon"></i><a href="index.html"> KG</a></li>
+    <li class="nl"> <i class="fas fa-home icon"></i><a class="active" href="index.html"> Home</a></li>
+    <li class="p"><i class="fas fa-shopping-basket icon"></i><a href="s.html"> Products</a></li>
+    <li class="nl" style=" float: right;">  <i class="fas fa-plus-circle icon"></i><a href="p.html">Add Products</a></li>
+  </ul>
+
+  
+</body>
+</html>

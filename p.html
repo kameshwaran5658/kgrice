@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KG RICE STORE</title>
+  <link rel="script" href="server.js">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      background-color: #f5f5f5;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .n {
+      list-style-type: none; 
+      text-decoration: none;
+      overflow: hidden;
+      background-color: #3498db;
+      border-radius: 0 0 30px 30px;
+      padding: 0;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      margin: auto;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease; /* Smooth transition on hover */
+    }
+
+    .nl, .p, li a {
+      display: inline-block;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ecf0f1;
+      text-decoration: none;
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    li a:hover {
+      background-color: #2980b9;
+      color: #fff;
+    }
+
+    /* Additional styles for the product section */
+    .product-section {
+       
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style for the product form */
+    .product-form {
+
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      
+     
+    }
+
+    .product-form label {
+      margin-bottom: 8px;
+    }
+
+    .product-form input {
+      padding: 8px;
+      margin-bottom: 16px;
+    }
+
+    .product-form button {
+      padding: 10px;
+      background-color: #3498db;
+      color: #ecf0f1;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .product-form button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Style for the product list */
+    .product-list {
+      margin-top: 20px;
+    }
+
+    .product-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .icon {
+      font-size: 24px;
+      margin-right: 5px;
+      transition: transform 0.3s ease; /* Smooth transition on hover */
+    }
+
+    .icon:hover {
+      transform: rotate(360deg) scale(1.2);
+    }
+
+    @media screen and (max-width: 600px) {
+      .nl, .p, li a {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <ul class="n">
+    <li class="nl"> <i class="fas fa-store icon"></i><a href="index.html"> KG</a></li>
+    <li class="nl"> <i class="fas fa-home icon"></i><a class="active" href="index.html"> Home</a></li>
+    <li class="p"><i class="fas fa-shopping-basket icon"></i><a href="s.html"> Products</a></li>
+    <li class="nl" style="float: right;"> <i class="fas fa-chart-bar icon"></i><a class="active" href=""> Reports</a></li>
+  </ul>
+  <div class="product-section">
+    <h2 style="margin-top: 50px;">Rice Shop Products</h2>
+    <div class="product-form">
+      <label for="productName">Product Name:</label>
+      <input type="text" id="productName" placeholder="Enter product name" required>
+
+      <label for="productPrice">Product Price (per kg):</label>
+      <input type="number" id="productPrice" placeholder="Enter product price" required>
+
+      <label for="productQuantity">Quantity (kg):</label>
+      <input type="number" id="productQuantity" placeholder="Enter quantity" required>
+
+      <button onclick="addProduct()">Add Product</button>
+    </div>
+
+    <!-- Product list -->
+    <div class="product-list" id="productList">
+      <!-- Product items will be dynamically added here -->
+    </div>
+  </div>
+<!-- ... (your existing HTML code) -->
+
+<script>
+  function addProduct() {
+    const productName = document.getElementById('productName').value;
+    const productPrice = parseFloat(document.getElementById('productPrice').value);
+    const productQuantity = parseFloat(document.getElementById('productQuantity').value);
+
+    if (productName && !isNaN(productPrice) && !isNaN(productQuantity)) {
+      const totalPrice = productPrice * productQuantity;
+
+      // Make a POST request to the server
+      fetch('http://localhost:3000/addProduct', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productName,
+          productPrice,
+          productQuantity,
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            // Product added successfully
+            alert('Product added successfully!');
+          } else {
+            // Handle error
+            alert(`Error: ${data.error}`);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An error occurred while adding the product.');
+        });
+    } else {
+      alert('Invalid input. Please enter valid values.');
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KG RICE STORE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      background-color: #f5f5f5;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .n {
+      list-style-type: none; 
+      text-decoration: none;
+      overflow: hidden;
+      background-color: #3498db;
+      border-radius: 0 0 30px 30px;
+      padding: 0;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      margin: auto;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease; /* Smooth transition on hover */
+    }
+
+    .nl, .p, li a {
+      display: inline-block;
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ecf0f1;
+      text-decoration: none;
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    li a:hover {
+      background-color: #2980b9;
+      color: #fff;
+    }
+
+    .icon {
+      font-size: 24px;
+      margin-right: 5px;
+      transition: transform 0.3s ease; /* Smooth transition on hover */
+    }
+
+    .icon:hover {
+      transform: rotate(360deg) scale(1.2);
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px;
+      width: calc(100% - 30px);
+      box-sizing: border-box;
+      height: 100vh;
+    }
+
+    .billing-section {
+      border-radius: 20px;
+      border: 4px double #3498db;
+      width: 40%;
+      padding: 20px;
+      background-color: #ecf0f1;
+      box-sizing: border-box;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 65px;
+    }
+    .search-section {
+      border-radius: 20px;
+      border: 4px double #3498db;
+      width: 59%;
+      padding: 20px;
+      background-color: #ecf0f1;
+      box-sizing: border-box;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 65px;
+    }
+
+    .sh {
+      width: calc(100% - 28px);
+      height: 38px;
+      padding: 10px;
+      border: 4px double #3498db;
+      border-radius: 20px;
+      margin-top: 20px;
+      font-size: 16px;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    .sh:focus {
+      border-color: #2980b9;
+    }
+
+    .hd {
+      list-style-type: none; 
+      text-decoration: none;
+      overflow: hidden;
+      border-radius: 30px;
+      width: 100%;
+      margin-top: 1px;
+      padding-bottom: 6px;
+      padding-left: 30px;
+      border: 4px double #3498db;
+      padding-top: 15px;
+      background-color: #ecf0f1;
+      box-sizing: border-box;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .hd li {
+      display: inline;
+      list-style: none;
+      color: #3498db;
+      text-decoration: none;
+      padding-right: 48px;  
+      font-weight: bolder;
+    }
+
+    /* Media Query for smaller screens */
+    @media screen and (max-width: 600px) {
+      .nl, .p, li a {
+        font-size: 14px;
+      }
+
+      .container {
+        flex-direction: column;
+      }
+
+      .billing-section, .search-section {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <ul class="n">
+    <li class="nl"> <i class="fas fa-store icon"></i><a href="index.html"> KG</a></li>
+    <li class="nl"> <i class="fas fa-home icon"></i><a class="active" href="index.html"> Home</a></li>
+    <li class="p"><i class="fas fa-shopping-basket icon"></i><a href="s.html"> Products</a></li>
+    <li class="nl" style="float: right;"> <i class="fas fa-chart-bar icon"></i><a class="active" href=""> Reports</a></li>
+  </ul>
+  <div class="container">
+    <div class="billing-section">
+      <h1 style="text-align: center; color: #3498db;">BILL </h1>
+      <ul class="hd">
+        <li>Products</li>
+        <li>Quantity</li>
+        <li>Price</li>
+        <li>Amount</li>
+      </ul>
+    </div>
+    <div class="search-section">
+      <input class="sh" type="text" placeholder="Enter the item to search">
+    </div>
+  </div>
+</body>
+</html>
